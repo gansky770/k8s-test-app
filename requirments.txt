@@ -1,0 +1,2 @@
+boto3==1.8.2
+python-json-logger==v0.1.3
