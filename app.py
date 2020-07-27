@@ -8,11 +8,6 @@ import os
 
 #define jsonlogger
 
-
-
-
-
-
 class CustomJsonFormatter(jsonlogger.JsonFormatter):
     def add_fields(self, log_record, record, message_dict):
         super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
@@ -22,21 +17,24 @@ class CustomJsonFormatter(jsonlogger.JsonFormatter):
             log_record['timestamp'] = now
         if  not log_record.get('Running clusters'):
             log_record['Running clusters'] = 770
-            #log_record['level'] = record.levelname
+         #cluster IP nad name function  TODO 
+    
 
-            
+ 
 
-formatter = CustomJsonFormatter('(threadName)  (name) (timestamp) (Running clusters) (msecs) (message) (levelname) ',validate=False)
+    
+
+formatter = CustomJsonFormatter('%(threadName)s  /n %(name)s /n %(timestamp)s  - %(Running clusters)s - %(msecs)s - %(message)s - %(levelname)s ')
 logHandler = logging.StreamHandler()
 logHandler.setFormatter(formatter)
 logger = logging.getLogger()
 logger.addHandler(logHandler)
 logger.setLevel(logging.INFO)
 
-    
+   
 
 
-
+#integrate boto3
 
 #ec2 = boto3.resource('ec2')
 ## Boto3
