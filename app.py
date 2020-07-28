@@ -5,11 +5,6 @@ import logging
 import datetime
 import os
 
-
-
-
-
-
 #define jsonlogger
 
 class CustomJsonFormatter(jsonlogger.JsonFormatter):
@@ -26,29 +21,27 @@ class CustomJsonFormatter(jsonlogger.JsonFormatter):
          #cluster IP nad name function  TODO 
 
          
-   
-
 cluster_info={}
 #test function for loogin info update
-def running_cluster_info():
+def running_cluster_info_test():
     i=0
     running_instances={'aws-cluster':'192.168.254.16','aws-clus2323232ter':'192.168.111.16','aws-cluster23232':'192.168.116.16'}
     for instance in running_instances:
         i+=1
-        ip=instance[i] #instance.private_ip_address
-        name=instance
-        cluster_info['cluster'+str(i)+' IP']=ip
-        cluster_info['Cluster'+str(i)+' Name']=name   
+        ip=running_instances[instance] #instance.private_ip_address
+        name=instance 
+        cluster_info['Cluster'+str(i)+'_IP']=ip
+        cluster_info['Cluster'+str(i)+'_Name']=name   
     
 
-formatter = CustomJsonFormatter('%(threadName)s  /n %(name)s /n %(timestamp)s  - %(msecs)s - %(Running clusters)s   - %(message)s - %(levelname)s ')
+formatter = CustomJsonFormatter('%(threadName)s  - %(name)s - %(timestamp)s  - %(msecs)s - %(Running clusters)s   - %(message)s - %(levelname)s ')
 logHandler = logging.StreamHandler()
 logHandler.setFormatter(formatter)
 logger = logging.getLogger()
 logger.addHandler(logHandler)
 logger.setLevel(logging.INFO)
-running_cluster_info()
-logger.info( 'testing K8S REPORTING',extra=cluster_info)
+running_cluster_info_test()
+logger.info( 'testing K8S REPORTING',extra=cluster_info,)
    
 
 
@@ -64,8 +57,7 @@ logger.info( 'testing K8S REPORTING',extra=cluster_info)
 #     Filters=[{'Name': 'tag:k8s.io/role/master', 'Values': ['1']},
 #              {'Name': 'instance-state-code', 'Values': ['16']}])
 #              for instance in running_instances:
-#                  i+=1
-#                  cluster_info+={'cluster'+str(i)+' IP':'192.168.254.26','Cluster'+str(i)+' Name':'AWSCluster'} 
+#              
 
 
 
