@@ -6,6 +6,10 @@ import datetime
 import os
 
 
+
+
+
+
 #define jsonlogger
 
 class CustomJsonFormatter(jsonlogger.JsonFormatter):
@@ -16,35 +20,53 @@ class CustomJsonFormatter(jsonlogger.JsonFormatter):
             now = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             log_record['timestamp'] = now
         if  not log_record.get('Running clusters'):
-            log_record['Running clusters'] = 770
+            log_record['Running clusters'] = int(len(cluster_info)/2)
+        #if not message_dict:
+    
          #cluster IP nad name function  TODO 
+
+         
+   
+
+cluster_info={}
+#test function for loogin info update
+def running_cluster_info():
+    i=0
+    running_instances={'aws-cluster':'192.168.254.16','aws-clus2323232ter':'192.168.111.16','aws-cluster23232':'192.168.116.16'}
+    for instance in running_instances:
+        i+=1
+        ip=instance[i] #instance.private_ip_address
+        name=instance
+        cluster_info['cluster'+str(i)+' IP']=ip
+        cluster_info['Cluster'+str(i)+' Name']=name   
     
 
- 
-
-    
-
-formatter = CustomJsonFormatter('%(threadName)s  /n %(name)s /n %(timestamp)s  - %(Running clusters)s - %(msecs)s - %(message)s - %(levelname)s ')
+formatter = CustomJsonFormatter('%(threadName)s  /n %(name)s /n %(timestamp)s  - %(msecs)s - %(Running clusters)s   - %(message)s - %(levelname)s ')
 logHandler = logging.StreamHandler()
 logHandler.setFormatter(formatter)
 logger = logging.getLogger()
 logger.addHandler(logHandler)
 logger.setLevel(logging.INFO)
-
+running_cluster_info()
+logger.info( 'testing K8S REPORTING',extra=cluster_info)
    
 
 
 #integrate boto3
 
-#ec2 = boto3.resource('ec2')
-## Boto3
-## Use the filter() method of the instances collection to retrieve
-## all running EC2 instances.
-# instances = ec2.instances.filter(
+
+# Boto3
+# Use the filter() method of the instances collection to retrieve
+# all running EC2 instances.
+# def cluster_info():
+#     ec2 = boto3.resource('ec2')
+#     running_instances = ec2.instances.filter(
 #     Filters=[{'Name': 'tag:k8s.io/role/master', 'Values': ['1']},
 #              {'Name': 'instance-state-code', 'Values': ['16']}])
-# for instance in instances:
-#     print(instance.id, instance.instance_type)
+#              for instance in running_instances:
+#                  i+=1
+#                  cluster_info+={'cluster'+str(i)+' IP':'192.168.254.26','Cluster'+str(i)+' Name':'AWSCluster'} 
+
 
 
 
@@ -84,5 +106,5 @@ logger.setLevel(logging.INFO)
 # }
 
 
-logger.info('testing K8S REPORTING')
+
     
