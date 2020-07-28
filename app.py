@@ -53,10 +53,6 @@ def running_cluster_info():
         cluster_info['Cluster'+str(i)+'_IP']=ip
         cluster_info['Cluster'+str(i)+'_Name']=name   
              
-
-             
-
-
 #define formatter for the log messages (base on class CustomJsonFormatter )
 formatter = CustomJsonFormatter('%(threadName)s  - %(name)s - %(timestamp)s  - %(msecs)s - %(Running clusters)s   - %(message)s - %(levelname)s ')
 #define jsonlogger
@@ -65,8 +61,8 @@ logHandler.setFormatter(formatter)
 logger = logging.getLogger()
 logger.addHandler(logHandler)
 logger.setLevel(logging.INFO)
-#running_cluster_info_test()
-running_cluster_info()
+running_cluster_info_test()
+#running_cluster_info()
 logger.info( 'testing K8S REPORTING',extra=cluster_info)
    
 
@@ -74,40 +70,6 @@ logger.info( 'testing K8S REPORTING',extra=cluster_info)
 
 
 
-# {
-#     "threadName": "MainThread",
-#     "name": "K8S REPORTS",
-
-#     "time": "04/08/2020",
-#     "Running clusters": 3,
-#     "CLUSTER 1 IP": 209.158.2.3,
-#     "CLUSTER NAME": “K8S TESTING”,
-#     "msecs": 506.24799728393555,
-#     "message": "testing K8S REPORTING",
-#     "levelname": "INFO",
-# }
-# ##default 
-# {
-#     "threadName": "MainThread",
-#     "name": "root",
-#     "thread": 140735202359648,
-#     "created": 1336281068.506248,
-#     "process": 41937,
-#     "processName": "MainProcess",
-#     "relativeCreated": 9.100914001464844,
-#     "module": "tests",
-#     "funcName": "testFormatKeys",
-#     "levelno": 20,
-#     "msecs": 506.24799728393555,
-#     "pathname": "tests/tests.py",
-#     "lineno": 60,
-#     "asctime": ["12-05-05 22:11:08,506248"],
-#     "message": "testing logging format",
-#     "filename": "tests.py",
-#     "levelname": "INFO",
-#     "special": "value",
-#     "run": 12
-# }
 
 
 
