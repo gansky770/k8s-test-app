@@ -1,13 +1,12 @@
 #!/usr/bin/python3
+import json
 import botocore
 import boto3
-from pythonjsonlogger import jsonlogger
+from pythonjsonlogger import jsonlogger 
+import pythonjsonlogger
 import logging
 import datetime
 import os
-
-
-
 
 #formatter constructor
 class CustomJsonFormatter(jsonlogger.JsonFormatter):
@@ -20,8 +19,7 @@ class CustomJsonFormatter(jsonlogger.JsonFormatter):
         if  not log_record.get('Running clusters'):
             log_record['Running clusters'] = int(len(cluster_info)/2)
          
-
-         
+        
 cluster_info={}
 #test function for loogin info update
 def running_cluster_info_test():
@@ -34,8 +32,6 @@ def running_cluster_info_test():
         cluster_info['Cluster'+str(i)+'_IP']=ip
         cluster_info['Cluster'+str(i)+'_Name']=name   
     
-
-
 #integrate boto3
 
 # Use the filter() method of the instances collection to retrieve
@@ -54,7 +50,9 @@ def running_cluster_info():
         cluster_info['Cluster'+str(i)+'_Name']=name   
              
 #define formatter for the log messages (base on class CustomJsonFormatter )
-formatter = CustomJsonFormatter('%(threadName)s  - %(name)s - %(timestamp)s  - %(msecs)s - %(Running clusters)s   - %(message)s - %(levelname)s ')
+formatter =CustomJsonFormatter ('%(threadName)s  - %(name)s - %(timestamp)s  - %(msecs)s -  %(message)s - %(levelname)s -%(Running clusters)s')
+#formatter=pythonjsonlogger.jsonlogger.JsonFormatter(format_str)
+
 #define jsonlogger
 logHandler = logging.StreamHandler()
 logHandler.setFormatter(formatter)
@@ -63,7 +61,7 @@ logger.addHandler(logHandler)
 logger.setLevel(logging.INFO)
 running_cluster_info_test()
 #running_cluster_info()
-logger.info( 'testing K8S REPORTING',extra=cluster_info)
+logger.info('testing K8S REPORTING',extra=cluster_info,)
    
 
 
