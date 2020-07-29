@@ -1,0 +1,15 @@
+version: '3'
+#sonarqube server
+services:
+  
+  sonarqube:
+      image: sonarqube
+      restart: unless-stopped
+      ports:
+        - 0.0.0.0:9000:9000
+        - 0.0.0.0:9092:9092
+      networks:
+       - sonarnet
+   
+networks:
+  sonarnet:

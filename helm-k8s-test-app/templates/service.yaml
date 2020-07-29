@@ -1,16 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "helm-k8s-test-app.fullname" . }}
-  labels:
-{{ include "helm-k8s-test-app.labels" . | indent 4 }}
+  name: {{.Values.service.name}}
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+  type: {{.Values.service.type}}
   selector:
-    app.kubernetes.io/name: {{ include "helm-k8s-test-app.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    app: {{.Values.service.selector}}
+  ports:
+      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
+    - port: {{.Values.service.port}}
+      targetPort: {{.Values.service.targetport}}
