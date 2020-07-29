@@ -20,6 +20,8 @@ while True:
                 log_record['timestamp'] = now
                 if  not log_record.get('Running clusters'):
                     log_record['Running clusters'] = int(len(cluster_info)/2)
+                if log_record.get('name'):
+                    log_record['name'] ='K8S REPORTS'   
     #extra dict-cluster info acamulator   
     cluster_info={}
     #test function for loogin info update
