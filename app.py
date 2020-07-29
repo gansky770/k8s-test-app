@@ -1,11 +1,9 @@
 #!/usr/bin/python3
-import botocore
 import boto3
 from pythonjsonlogger import jsonlogger 
 import logging
 import datetime
 import time
-import os
 from decouple import config
 #define runtime parametr from config (.ENV)
 runtime = config('RUNTIME')
