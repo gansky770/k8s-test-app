@@ -5,7 +5,7 @@ COPY app.py ./app.py
 COPY .env ./.env
 COPY pylint.cfg ./pylint.cfg
 WORKDIR /wheels
-COPY requirements.txt ./requirements.txt
+COPY requirments.txt ./requirments.txt
 # PIP Will create an archive of our libraries so we don't need to download them again
 # argument - wheel
 RUN pip wheel -r ./requirements.txt 
