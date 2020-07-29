@@ -16,7 +16,7 @@ FROM eeacms/pylint:latest as linting
 WORKDIR /code
 COPY --from=builder /usr/src/app/pylint.cfg /etc/pylint.cfg
 COPY --from=builder /usr/src/app/app.py ./app.py
-RUN ["/docker-entrypoint.sh", "pylint ","--disable=C"]
+RUN ["/docker-entrypoint.sh", "pylint ","--disable=all --enable=W"]
 
 # Phase III Running Sonarqube scanner (Sonarqube server also required)
 # FROM newtmitch/sonar-scanner as sonarqube
