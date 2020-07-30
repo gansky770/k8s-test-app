@@ -21,8 +21,9 @@ node {
        //def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '--network k8stest-pipeline_sonarnet .').push()
        def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '.').push()
      }
-   }
    
-    // stage('MERGE  to master branch')
-    //   //todo
-   }
+   
+   stage('MERGE  to master branch') {
+     sh "git merge master development"
+     sh "Success Merged to Master" }
+ }      
