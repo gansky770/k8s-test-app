@@ -46,9 +46,9 @@ ENV PYTHONUNBUFFERED=1
 RUN mkdir root/.aws
 COPY config root/.aws/
 COPY credentials  root/.aws/
-RUN apt-get -qq update && apt-get install -y build-essential \
-    libssl-dev groff \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get -qq update && apt-get install -y build-essential \
+#     libssl-dev groff \
+#     && rm -rf /var/lib/apt/lists/*
 WORKDIR /usr/src/app
 # Copy all packages instead of rerunning pip install
 COPY --from=builder /wheels /wheels
