@@ -9,16 +9,17 @@ node {
      
    }
    
-   stage('sonarqube server') {
-      //checkout scm
-      sh "docker-compose up  -d" 
-    }
+  //  stage('sonarqube server') {
+  //     //checkout scm
+  //     sh "docker-compose up  -d" 
+  //   }
   
    
    stage('docker build/push') {
     //sh 'sleep 2m'
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
-       def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '--network k8stest-pipeline_sonarnet .').push()
+       //def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '--network k8stest-pipeline_sonarnet .').push()
+       def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '.').push()
      }
    }
    
