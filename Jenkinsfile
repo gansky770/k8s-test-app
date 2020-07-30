@@ -24,6 +24,6 @@ node {
    }
    
    stage('MERGE  to master branch') {
-     sh "git merge master development"
+     sh "git merge origin/master origin/development"
      }
  }      
