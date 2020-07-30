@@ -25,5 +25,5 @@ node {
    
    stage('MERGE  to master branch') {
      sh "git merge master development"
-     sh "Success Merged to Master" }
+     }
  }      
