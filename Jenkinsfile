@@ -27,7 +27,7 @@ node {
      checkout scm 
      credentialsId:'jenkins-labs'
      
-     sh"git config --global user.email "jenkins@localhost" " "
+     sh"git config --global user.email "jenkins@localhost"  "
      sh"git config --global user.name "jenkins" "
      sh "git merge origin/master origin/development"
      sh "git push origin master"
