@@ -22,8 +22,13 @@ node {
        def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '.').push()
      }
    }
-   
+    
    stage('MERGE  to master branch') {
+     checkout scm 
+     
+    //  sh"git config --global user.email "you@example.com" " "
+    //  sh"git config --global user.name "Your Name" "
      sh "git merge origin/master origin/development"
+     sh "git push origin master"
      }
  }      
