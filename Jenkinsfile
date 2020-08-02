@@ -26,8 +26,6 @@ node {
    stage('MERGE  to master branch') {
      checkout scm 
      credentialsId:'jenkins-labs'
-     sh"git config --global user.email "you@example.com"  "
-     sh"git config --global user.name "jenkins" "
      sh "git merge origin/master origin/development"
      sh "git push origin master"
      }
