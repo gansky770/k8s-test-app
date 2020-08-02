@@ -1,6 +1,5 @@
 node {
    withCredentials([string(credentialsId: 'jenkins-labs', variable: 'TOKEN')]
-   def commit_id
    stage('chekout scm') {
      checkout scm 
      sh "git rev-parse --abbrev-ref HEAD > GIT_BRANCH"                        
