@@ -1,4 +1,5 @@
 node {
+   withCredentials([string(credentialsId: 'jenkins-labs', variable: 'TOKEN')]
    def commit_id
    stage('chekout scm') {
      checkout scm 
@@ -25,7 +26,6 @@ node {
     
    stage('MERGE  to master branch') {
      checkout scm 
-     credentialsId:'jenkins-labs'
      sh "git merge origin/master origin/development"
      sh "git push origin master"
      }
