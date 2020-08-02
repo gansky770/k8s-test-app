@@ -23,8 +23,7 @@ node {
    }
     
    stage('MERGE  to master branch') {
-     withCredentials([string(credentialsId: 'jenkins-labs', variable: 'TOKEN')]
-     checkout scm 
+     withCredentials(credentialsId: 'jenkins-labs', variable: 'USERPASS')] 
      sh "git merge origin/master origin/development"
      sh "git push origin master"
      }
