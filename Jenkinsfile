@@ -23,7 +23,7 @@ node {
    }
     
    stage('MERGE  to master branch') {
-     withCredentials(credentialsId: 'jenkins-labs', variable: 'USERPASS')] 
+     withCredentials(credentialsId: 'jenkins-labs')] 
      sh "git merge origin/master origin/development"
      sh "git push origin master"
      }
