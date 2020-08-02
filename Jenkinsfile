@@ -1,5 +1,4 @@
 node {
-   withCredentials([string(credentialsId: 'jenkins-labs', variable: 'TOKEN')]
    stage('chekout scm') {
      checkout scm 
      sh "git rev-parse --abbrev-ref HEAD > GIT_BRANCH"                        
@@ -24,6 +23,7 @@ node {
    }
     
    stage('MERGE  to master branch') {
+     withCredentials([string(credentialsId: 'jenkins-labs', variable: 'TOKEN')]
      checkout scm 
      sh "git merge origin/master origin/development"
      sh "git push origin master"
