@@ -25,7 +25,7 @@ node {
    stage('MERGE  to master branch') {
      checkout scm 
     // git branch: 'origin/master', credentialsId: 'github', url: 'git@github.com:gansky770/k8s-test-app.git'
-     sh "git checkout master"
-     sh "git push origin master"
+     sh "git checkout origin/master"
+     sh "git push origin/master"
      }
  }      
