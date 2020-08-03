@@ -26,5 +26,5 @@ node {
      //git branch: 'origin/master', credentialsId: 'jenkins-labs', url: 'git@github.com:gansky770/k8s-test-app.git'
      //sh "git merge  origin/development"
      //sh "git push origin master"
-     }
+     //}
  }      
