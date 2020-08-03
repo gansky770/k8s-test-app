@@ -22,9 +22,9 @@ node {
      }
    }
     
-   //stage('MERGE  to master branch') {
-     //git branch: 'origin/master', credentialsId: 'jenkins-labs', url: 'git@github.com:gansky770/k8s-test-app.git'
-     //sh "git merge  origin/development"
-     //sh "git push origin master"
-     //}
+   stage('MERGE  to master branch') {
+     git branch: 'origin/master', credentialsId: 'github', url: 'git@github.com:gansky770/k8s-test-app.git'
+     sh "git merge  origin/development"
+     sh "git push origin master"
+     }
  }      
