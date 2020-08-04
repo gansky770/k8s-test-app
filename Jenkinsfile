@@ -1,4 +1,5 @@
 node {
+  withCredentials([usernamePassword(credentialsId: 'git', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]
    stage('chekout scm') {
      checkout scm 
      sh "git rev-parse --abbrev-ref HEAD > GIT_BRANCH"                        
@@ -24,13 +25,7 @@ node {
     
    stage('MERGE  to master branch') {
      checkout scm 
-     withCredentials([usernamePassword(credentialsId: 'git', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
-  // available as an env variable, but will be masked if you try to print it out any which way
-  // note: single quotes prevent Groovy interpolation; expansion is by Bourne Shell, which is what you want
-     sh 'echo $PASSWORD'
-  // or inside double quotes for string interpolation
-     echo "username is $USERNAME"
-}
+     
      //git branch: 'origin/master', credentialsId: 'git', url: 'ssh://git@github.com:gansky770/k8s-test-app.git'
      sh "git config --global user.email 'gansky.m@gmail.com'"
      sh "git config --global user.name 'gansky770'"
