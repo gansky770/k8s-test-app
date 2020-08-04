@@ -21,10 +21,22 @@ node {
        def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '.').push()
      }
    }
+   
+    stage('Push') {
+        environment { 
+            GIT_AUTH = credentials('git') 
+        }
+        steps {
+            sh('''
+                git config --local credential.helper "!f() { echo username=\\$GIT_AUTH_USR; echo password=\\$GIT_AUTH_PSW; }; f"
+                git push origin HEAD:$TARGET_BRANCH
+            ''')
+        }
+    }
+   
     
    stage('MERGE  to master branch') {
     checkout scm 
-     credentialsId: ['git']
      //git branch: 'origin/development', credentialsId: 'git', url: 'https://github.com/gansky770/k8s-test-app.git'
      sh "git config --global user.email 'gansky.m@gmail.com'"
      sh "git config --global user.name 'gansky770'"
