@@ -27,7 +27,7 @@ node {
     // git branch: 'origin/master', credentialsId: 'github', url: 'git@github.com:gansky770/k8s-test-app.git'
      sh "git config --global user.email 'gansky.m@gmail.com'"
      sh "git config --global user.name 'gansky770'"
-     sh "git checkout master"
+     sh "git checkout --force master"
      sh "git merge origin/development"
      //sh "git add ."
      //sh "git commit -m 'Merge development to master' "
