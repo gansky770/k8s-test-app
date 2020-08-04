@@ -34,6 +34,6 @@ node {
      sh "git merge origin/development"
      //sh "git add ."
      //sh "git commit -m 'Merge development to master' "
-     sh "git push -u origin master --force --verbose" 
+     //sh "git push -u origin master --force --verbose" 
      }
  }      
