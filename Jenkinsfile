@@ -24,6 +24,7 @@ node {
     
    stage('MERGE  to master branch') {
     checkout scm 
+     credentialsId: ['git']
      //git branch: 'origin/development', credentialsId: 'git', url: 'https://github.com/gansky770/k8s-test-app.git'
      sh "git config --global user.email 'gansky.m@gmail.com'"
      sh "git config --global user.name 'gansky770'"
