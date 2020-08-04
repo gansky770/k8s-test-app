@@ -23,15 +23,14 @@ node {
    }
     
    stage('MERGE  to master branch') {
-     //checkout scm 
-     
+     checkout scm 
      git branch: 'origin/master', credentialsId: 'git', url: 'https://github.com/gansky770/k8s-test-app.git'
      sh "git config --global user.email 'gansky.m@gmail.com'"
      sh "git config --global user.name 'gansky770'"
-     //sh "git checkout --force master"
+     sh "git checkout --force master"
      sh "git merge origin/development"
-     //sh "git add ."
-     //sh "git commit -m 'Merge development to master' "
+     sh "git add ."
+     sh "git commit -m 'Merge development to master' "
      sh "git push -u origin master --force --verbose" 
      }
  }      
