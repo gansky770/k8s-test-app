@@ -29,8 +29,8 @@ node {
      sh "git config --global user.name 'gansky770'"
      sh "git checkout master"
      sh "git merge origin/development"
-     sh "git add ."
-     sh "git commit -m 'Merge development to master' "
+     //sh "git add ."
+     //sh "git commit -m 'Merge development to master' "
      sh "git push -u origin master --verboser"
      }
  }      
