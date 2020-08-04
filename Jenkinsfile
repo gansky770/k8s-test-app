@@ -26,7 +26,9 @@ node {
    
     
    stage('MERGE  to master branch') {
+    deleteDir()
     checkout scm
+      
      sh "git config --global user.email 'gansky.m@gmail.com'"
      sh "git config --global user.name 'gansky770'"
      sh "git checkout --force master"
