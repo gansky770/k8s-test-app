@@ -26,7 +26,7 @@ node {
    
     
    stage('MERGE  to master branch') {
-    deleteDir()
+    cleanws()
     checkout scm
       
      sh "git config --global user.email 'gansky.m@gmail.com'"
