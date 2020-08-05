@@ -19,8 +19,9 @@ node {
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
        //def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '--network k8stest-pipeline_sonarnet .').push()
        def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '.').push()
-       sh 'export TAG=${BUILD_NUMBER}' 
-       sh ' printenv | sort '
+       sh "export TAG=${BUILD_NUMBER}" 
+       sh " printenv | sort "
+       sh "env"
         
      }
    }
