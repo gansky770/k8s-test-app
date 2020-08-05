@@ -20,7 +20,7 @@ node {
        //def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '--network k8stest-pipeline_sonarnet .').push()
        def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '.').push()
        sh "export TAG=${BUILD_NUMBER}"
-       sh " echo env.TAG 
+       sh " echo env.TAG "
        sh " printenv | sort "
         
      }
