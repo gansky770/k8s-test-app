@@ -1,9 +1,9 @@
 node {
    stage('chekout scm') {
      checkout scm 
-     sh "git rev-parse --abbrev-ref HEAD > GIT_BRANCH"                        
-     git_branch = readFile('GIT_BRANCH').trim()
-     echo git_branch
+    // sh "git rev-parse --abbrev-ref HEAD > GIT_BRANCH"                        
+    // git_branch = readFile('GIT_BRANCH').trim()
+    // echo git_branch
 
      
    }
@@ -14,15 +14,13 @@ node {
   //   }
   
    
-   stage('docker build/push') {
+   stage('docker build/push ') {
     //sh 'sleep 2m'
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
        //def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '--network k8stest-pipeline_sonarnet .').push()
        def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '.').push()
        sh "echo imagetag: ${BUILD_NUMBER} >> /var/jenkins_home/workspace/k8stest-pipeline/helm-k8s-test-app/values.yaml"
        sh "cat /var/jenkins_home/workspace/k8stest-pipeline/helm-k8s-test-app/values.yaml"
-       sh " printenv | sort "
-       
         
      }
    }
