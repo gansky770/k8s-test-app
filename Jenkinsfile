@@ -19,9 +19,10 @@ node {
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
        //def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '--network k8stest-pipeline_sonarnet .').push()
        def app = docker.build("gansky/k8stest:${BUILD_NUMBER}", '.').push()
-       sh "echo 'tag= ${BUILD_NUMBER}' >> /var/jenkins_home/workspace/k8stest-pipeline/helm-k8s-test-app/values.yaml"
+       export TAG= ${BUILD_NUMBER}
+       //sh "echo 'tag= $BUILD_NUMBER' >> /var/jenkins_home/workspace/k8stest-pipeline/helm-k8s-test-app/values.yaml"
        sh " printenv | sort "
-       sh "env"
+       sh "process.env"
         
      }
    }
