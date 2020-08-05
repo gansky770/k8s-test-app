@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: k8stest
-        image: {{.Values.image.repository}}{{.Values.image.tag}}
+        image: {{.Values.image.repository}}:{{.Values.imagetag}}
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
