@@ -42,6 +42,8 @@ node {
                         sh """
                             git config user.email "ci-user@email.com"
                             git config user.name "Jenkins"
+                            git add .
+                            git commit -m 'Merge development to master'
                             git checkout --force master
                             git merge origin/development
                             git push  -u origin master --force
