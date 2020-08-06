@@ -44,7 +44,7 @@ node {
                             git config user.name "Jenkins"
                             git add .
                             git commit -m 'push development'
-                            git push  --all origin 
+                            git push  -u origin HEAD:development 
                             git checkout master
                             git merge origin/development
                             git push  -u origin master 
