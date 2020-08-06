@@ -56,7 +56,7 @@ node {
       
      sh "git config --global user.email 'gansky.m@gmail.com'"
      sh "git config --global user.name 'Jenkins'"
-     sh "git remote add origin git@github.com:gansky770/k8s-test-app.git"
+     //sh "git remote add origin git@github.com:gansky770/k8s-test-app.git"
      sh "git checkout --force master"
      sh "git merge origin/development"
      //sh "git add ."
