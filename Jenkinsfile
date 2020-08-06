@@ -47,7 +47,7 @@ node {
                                 -m "Job: ${env.JOB_NAME}" \
                                 -m "Build: ${env.BUILD_NUMBER}" \
                                 -m "Env Branch: ${env.BRANCH_NAME}"
-                            git push origin master
+                            git push  -u origin master --force
                         """
                     }
                 }
