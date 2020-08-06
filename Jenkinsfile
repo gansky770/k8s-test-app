@@ -44,7 +44,7 @@ node {
                             git config user.name "Jenkins"
                             git add .
                             git commit -m 'Merge development to master'
-                            git checkout --force master
+                            git checkout master
                             git merge origin/development
                             git push  -u origin master --force
                         """
