@@ -29,7 +29,7 @@ node {
    stage('MERGE  to master branch') {
       cleanWs()
       checkout scm
-      step('pass the imagetag number'){
+      step('pass'){
       sh "cat /var/jenkins_home/workspace/k8stest-pipeline/helm-k8s-test-app/values.yaml"
       sh "sed '/imagetag/d' /var/jenkins_home/workspace/k8stest-pipeline/helm-k8s-test-app/values.yaml > /var/jenkins_home/workspace/k8stest-pipeline/helm-k8s-test-app/temp.yaml  "
       sh "echo imagetag: ${BUILD_NUMBER} >> /var/jenkins_home/workspace/k8stest-pipeline/helm-k8s-test-app/temp.yaml"
