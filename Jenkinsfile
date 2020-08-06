@@ -43,10 +43,11 @@ node {
                             git config user.email "ci-user@email.com"
                             git config user.name "Jenkins"
                             git add .
-                            git commit -m 'Merge development to master'
+                            git commit -m 'push development'
+                            git push  -u origin development 
                             git checkout master
-                            git merge development
-                            git push  -u origin master --force
+                            git merge origin/development
+                            git push  -u origin master 
                         """
                     }
                 }
