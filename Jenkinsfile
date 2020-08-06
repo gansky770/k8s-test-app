@@ -58,8 +58,8 @@ node {
      sh "git config --global user.name 'Jenkins'"
      sh "git checkout --force master"
      sh "git merge origin/development"
-     sh "git add ."
-     sh "git commit -m 'Merge development to master' "
+     //sh "git add ."
+     //sh "git commit -m 'Merge development to master' "
      sh "git push -u origin master --force --verbose" 
      }
  }      
