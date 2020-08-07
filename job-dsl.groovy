@@ -10,7 +10,11 @@ pipelineJob("k8stest-pipeline") {
 						credentials("git")
 					}
 					branch("*/development")
+			triggers {
+                           scm('* * * * *')
+                             }
 				}
+			
 			}
 			scriptPath("Jenkinsfile")
 		}
