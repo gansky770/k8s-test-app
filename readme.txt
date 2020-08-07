@@ -3,5 +3,5 @@
 2. insert accesskey to credentials file
 3. configure .env file for runtime ,credentials,config.
 # jenkins
-1.must instal plugins (git,docker,shagent)
+1.must instal plugins (git,docker,shagent,jobdsl)
 2. create credentials (dockerhub ,git >> must bu ssh >>create keypair with jenkins username )
