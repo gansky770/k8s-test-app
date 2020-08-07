@@ -10,9 +10,9 @@ pipelineJob("k8stest-pipeline") {
 						credentials("git")
 					}
 					branch("*/development")
-			triggers {
-                           scm('* * * * *')
-                             }
+			//triggers {
+                          // scm('* * * * *')
+                            // }
 				}
 			
 			}
