@@ -25,7 +25,7 @@ while True:
     #test function for loogin info update
     def running_cluster_info_test():
         i=0
-        running_instances={'aws-cluster':'192.168.254.16','aws-clus2323232ter':'192.168.111.16','aws-cluster23232':'192.168.116.16'}
+        running_instances={'aws-cluster':'192.168.254.16','aws-cluster770880990':'192.168.111.16','aws-cluster23232':'192.168.116.16'}
         for instance in running_instances:
             i+=1
             ip=running_instances[instance] #instance.private_ip_address
