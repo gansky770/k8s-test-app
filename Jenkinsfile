@@ -44,7 +44,7 @@ node {
                             git config user.name "Jenkins"
                             git add .
                             git commit -m 'push development'
-                            // git push  -u origin HEAD:development 
+                           
                             git checkout master
                             git merge development
                             git push  -u origin master 
@@ -62,5 +62,9 @@ node {
     //  //sh "git add ."
     //  //sh "git commit -m 'Merge development to master' "
     //  sh "git push -u origin master --force --verbose" 
+
+
+ // git push  -u origin HEAD:development  // 
+
      }
  }      
