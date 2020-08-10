@@ -15,4 +15,4 @@ service:
   selector: k8stest
   port: 80
   targetport: 8080 
-imagetag: 34
+imagetag: 35
