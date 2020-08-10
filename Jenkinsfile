@@ -9,8 +9,8 @@ node {
    }
    
   //  stage('sonarqube server') {
-  //  //   //checkout scm
-  //    // sh "docker-compose up  -d" 
+  //     //checkout scm
+  // //   // sh "docker-compose up  -d" 
   //   }
   
    
