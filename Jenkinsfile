@@ -46,6 +46,7 @@ node {
                             git commit -m 'push development'
                            
                             git checkout master
+                            git fetch --all
                             git merge development
                             git push  -u origin master 
                         """
