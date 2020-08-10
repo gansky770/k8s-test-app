@@ -42,7 +42,7 @@ node {
                         sh """
                             git config user.email "ci-user@email.com"
                             git config user.name "Jenkins"
-                            git chekout development
+                            git checkout development
                             git add .
                             git commit -m ' development'
                       
