@@ -42,11 +42,11 @@ node {
                         sh """
                             git config user.email "ci-user@email.com"
                             git config user.name "Jenkins"
+                            git chekout development
                             git add .
-                            git commit -m 'push development'
-                           
+                            git commit -m ' development'
+                      
                             git checkout master
-                            git fetch --all
                             git merge development
                             git push  -u origin master 
                         """
