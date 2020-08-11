@@ -48,7 +48,7 @@ node {
                       
                             git checkout master
                             git merge development
-                            git push  -u origin --all
+                            git push  -u origin master
                         """
                     }
                 }

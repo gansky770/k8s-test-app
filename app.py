@@ -5,6 +5,9 @@ import logging
 import datetime
 import time
 from decouple import config
+
+ 
+
 #define runtime parametr from config (.ENV)
 runtime = config('RUNTIME')
 
@@ -64,7 +67,7 @@ while True:
 # define time to run
     time.sleep(int(runtime))
      
-
+  
 
 
 
