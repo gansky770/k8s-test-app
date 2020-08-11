@@ -5,24 +5,31 @@ import logging
 import datetime
 import time
 from decouple import config
-
- 
+import sys
+logHandler = logging.FileHandler('clusterInfo.json')
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logger.addHandler(logHandler)
+#formatter constructor
+class CustomJsonFormatter(jsonlogger.JsonFormatter):
+    def add_fields(self, log_record, record, message_dict):
+        super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
+        if not log_record.get('timestamp'):
+            now = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+            log_record['timestamp'] = now
+            if  not log_record.get('Running clusters'):
+                log_record['Running clusters'] = int(len(cluster_info)/2)
+            if log_record.get('name'):
+                log_record['name'] ='K8S REPORTS' 
+formatter =CustomJsonFormatter('%(threadName)s  - %(name)s - %(timestamp)s  - %(msecs)s -  %(message)s - %(levelname)s -%(Running clusters)s')
+#formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logHandler.setFormatter(formatter)
 
 #define runtime parametr from config (.ENV)
 runtime = config('RUNTIME')
 
 while True:
-    #formatter constructor
-    class CustomJsonFormatter(jsonlogger.JsonFormatter):
-        def add_fields(self, log_record, record, message_dict):
-            super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
-            if not log_record.get('timestamp'):
-                now = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-                log_record['timestamp'] = now
-                if  not log_record.get('Running clusters'):
-                    log_record['Running clusters'] = int(len(cluster_info)/2)
-                if log_record.get('name'):
-                    log_record['name'] ='K8S REPORTS'   
+      
     #extra dict-cluster info acamulator   
     cluster_info={}
     #test function for loogin info update
@@ -52,18 +59,20 @@ while True:
             cluster_info['Cluster'+str(i)+'_IP']=ip
             cluster_info['Cluster'+str(i)+'_Name']=name                
 #define formatter for the log messages (base on class CustomJsonFormatter )
-    formatter =CustomJsonFormatter('%(threadName)s  - %(name)s - %(timestamp)s  - %(msecs)s -  %(message)s - %(levelname)s -%(Running clusters)s')
+    
 #formatter=pythonjsonlogger.jsonlogger.JsonFormatter(format_str)
 
 #define jsonlogger
-    logHandler = logging.StreamHandler()
-    logHandler.setFormatter(formatter)
-    logger = logging.getLogger()
-    logger.addHandler(logHandler)
-    logger.setLevel(logging.INFO)
+ 
     running_cluster_info_test()
     #running_cluster_info() 
-    logger.info('testing K8S REPORTING',extra=cluster_info)
+
+    # with open('help.txt', 'w') as f:
+    #      with redirect_stdout(f):
+    #          sys.stdout = logger
+    #          print('it now prints to `help.text`')
+    logger.info('Testing K8S REPORTING',extra=cluster_info)
+    
 # define time to run
     time.sleep(int(runtime))
      
