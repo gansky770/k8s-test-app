@@ -10,38 +10,21 @@ from flask import Flask ,render_template,url_for,jsonify
 import json
 from json2html import *
 from io import StringIO
+import runserver
+#app = Flask(__name__)
+# @app.route("/")
+# def main():
+#     with open('clusterinfo.json', 'r') as myfile:
+#         data=myfile.read()
+#      #parse to json   
+#         jsonobj=json.dumps(data)
+#      # convert to html   
+#     return  json2html.convert(json=jsonobj,table_attributes="class=\"table table-bordered table-hover\"")
+    #return jsonobj
+ #if __name__ == "__main__":
 
-app = Flask(__name__)
-@app.route("/")
-def main():
-    with open('clusterinfo.json', 'r') as myfile:
-        data=myfile.read()
-     #parse to json   
-        jsonobj=json.dumps(data)
-     # convert to html   
-        #htmljson = (json2html.convert(json=jsonobj))
-        rsp = StringIO()
-        rsp.write("""<!doctype html>
-<html>
-<head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 
-<!-- Optional theme -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
- 
-</head><body>
-<!-- Latest compiled and minified JavaScript -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-""")
-        rsp.write(json2html.convert(json=jsonobj, table_attributes="class=\"table table-bordered table-hover\""))
-        rsp.write('</body></html>')
-    #return  render_template('main.html',output={rsp.getvalue()},)
-    return  json2html.convert(json=jsonobj,table_attributes="class=\"table table-bordered table-hover\"")
-   
-if __name__ == "__main__":
-    app.run(debug=True)
-   
+#     app.run(debug=True)
+#logHandler = logging.StreamHandler()  
 logHandler = logging.FileHandler('clusterInfo.json')
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -96,33 +79,6 @@ while True:
     running_cluster_info_test()
     #running_cluster_info() 
     logger.info('Testing K8S REPORTING',extra=cluster_info)
-    # read file
-#     with open('clusterinfo.json', 'r') as myfile:
-#         data=myfile.read()
-#      #parse to json   
-#         jsonobj=json.dumps(data)
-#      # convert to html   
-#         htmljson = (json2html.convert(json=jsonobj))
-#         print(htmljson)
-#         rsp = StringIO()
-#         rsp.write("""<!doctype html>
-# <html>
-# <head>
-# <!-- Latest compiled and minified CSS -->
-# <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 
-# <!-- Optional theme -->
-# <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
- 
-# </head><body>
-# <!-- Latest compiled and minified JavaScript -->
-# <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-# """)
-#         rsp.write(json2html.convert(json=jsonobj, table_attributes="class=\"table table-bordered table-hover\""))
-#         rsp.write('</body></html>')
-#         return 'text/html',rsp.getvalue()
-
-    # define time to run
     time.sleep(int(runtime))
      
   
