@@ -9,10 +9,11 @@ image:
 deployment:
   labels: k8stest 
   selector: k8stest
-service:
-  name: srv-k8stest
-  type: LoadBalancer
-  selector: k8stest
-  port: 80
-  targetport: 8080 
+  logenabled: t
+# service:
+#   name: srv-k8stest
+#   type: LoadBalancer
+#   selector: k8stest
+#   port: 80
+#   targetport: 8080 
 imagetag: 35

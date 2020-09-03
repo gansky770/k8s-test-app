@@ -1,19 +1,19 @@
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
-  name: quickstart
+  name: kibana
 spec:
   version: 7.9.0
   count: 1
   elasticsearchRef:
-    name: quickstart
-  http:
-    service:
-      spec:
-        type: LoadBalancer # default is ClusterIP
-    tls:
-      selfSignedCertificate:
-        disabled: true  
+    name: elasticsearch
+  # http:
+  #   service:
+  #     spec:
+  #       type: LoadBalancer # default is ClusterIP
+  #   tls:
+  #     selfSignedCertificate:
+  #       disabled: true  
   podTemplate:
     spec:
       containers:

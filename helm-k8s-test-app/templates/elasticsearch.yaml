@@ -1,13 +1,19 @@
 apiVersion: elasticsearch.k8s.elastic.co/v1beta1
 kind: Elasticsearch
 metadata:
-  name: quickstart
+  name: elasticsearch
 spec:
   version: 7.9.0
-  
   nodeSets:
   - name: master-data-ingest
     count: 1
+    # http:
+    #   service:
+    #     spec:
+    #       type: ClusterIP # default is ClusterIP
+    #       tls:
+    #         selfSignedCertificate:
+    #           disabled: true  
     podTemplate:
       spec:
         volumes:
