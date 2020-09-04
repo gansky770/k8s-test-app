@@ -16,9 +16,6 @@ spec:
     #           disabled: true  
     podTemplate:
       spec:
-        volumes:
-          - name: elasticsearch-data
-            emptyDir: {}
         containers:
         - name: elasticsearch
           env:
@@ -30,7 +27,14 @@ spec:
               cpu: 0.5
             limits:
               memory: 4Gi
-              cpu: 2      
+              cpu: 2 
+          volumeMounts:
+          - name: elasticsearch-data
+            mountPath: /mnt/data   
+        volumes:
+        - name: elasticsearch-data
+          hostpath:
+            path: /mnt/data    
     config:
       node.master: true
       node.data: true
@@ -41,7 +45,7 @@ spec:
   #   podTemplate:
   #     spec:
   #       volumes:
-  #         - name: elasticsearch-data
+  #         - .name: elasticsearch-data
   #           emptyDir: {}
   #       containers:
   #       - name: elasticsearch
