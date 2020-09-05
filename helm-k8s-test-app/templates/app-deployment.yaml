@@ -6,7 +6,7 @@ metadata:
     app: {{.Values.deployment.labels}}
     logenabled: {{.Values.deployment.logenabled}}
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{.Values.deployment.selector}}
