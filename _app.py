@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import sys
 import boto3
 from pythonjsonlogger import jsonlogger 
 import logging
@@ -12,7 +13,7 @@ while True:
     #formatter constructor
     class CustomJsonFormatter(jsonlogger.JsonFormatter):
         def add_fields(self, log_record, record, message_dict):
-            super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
+            #super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
             if not log_record.get('timestamp'):
                 now = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 log_record['timestamp'] = now
@@ -53,7 +54,7 @@ while True:
 #formatter=pythonjsonlogger.jsonlogger.JsonFormatter(format_str)
 
 #define jsonlogger
-    logHandler = logging.StreamHandler()
+    logHandler = logging.StreamHandler(sys.stdout)
     logHandler.setFormatter(formatter)
     logger = logging.getLogger()
     logger.addHandler(logHandler)

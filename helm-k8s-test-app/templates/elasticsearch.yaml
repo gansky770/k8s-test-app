@@ -28,14 +28,13 @@ spec:
             limits:
               memory: 4Gi
               cpu: 2 
-          # volumeMounts:
-          # - name: elasticsearch-data
-          #   mountPath: /mnt/data   
+          volumeMounts:
+          - name: elasticsearch-data
+            mountPath: /mnt/data   
         volumes:
         - name: elasticsearch-data
-          emptyDir: {}
-          # hostpath:
-          #   path: /mnt/data    
+          hostpath:
+            path: /mnt/data    
     config:
       node.master: true
       node.data: true
