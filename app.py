@@ -14,7 +14,7 @@ while True:
     #formatter constructor
     class CustomJsonFormatter(jsonlogger.JsonFormatter):
         def add_fields(self, log_record, record,message_dict):
-            super(CustomJsonFormatter, self).add_fields(log_record, record,message_dict )
+            super(CustomJsonFormatter, self).add_fields(log_record,record,message_dict )
             if not log_record.get('timestamp'):
                 now = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 log_record['timestamp'] = now
