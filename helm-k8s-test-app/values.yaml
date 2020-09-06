@@ -16,4 +16,4 @@ deployment:
 #   selector: k8stest
 #   port: 80
 #   targetport: 8080 
-imagetag: 35
+imagetag: 37
