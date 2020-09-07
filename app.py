@@ -15,13 +15,18 @@ while True:
     class CustomJsonFormatter(jsonlogger.JsonFormatter):
         def add_fields(self, log_record, record, message_dict):
             #super(CustomJsonFormatter, self).add_fields(log_record,record, message_dict )
+            log_record['line'] = record.message
+            log_record['loglevel'] = record.levelname
             if not log_record.get('timestamp'):
                 now = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 log_record['timestamp'] = now
-                if  not log_record.get('Running instances'):
-                    log_record['Running instances'] = int(len(instances_info)/2)
-                if  not log_record.get('region'):
-                    log_record['region'] = region
+            if  not log_record.get('Running instances'):
+                if mockup=='TRUE': #if mockup ,random number of instances
+                    log_record['Running instances'] = int(len(instances_info)/2)*int(random.randrange(0,7,1))
+                else:
+                    log_record['Running instances'] = int(len(instances_info)/2)   
+            if  not log_record.get('region'):
+                log_record['region'] = region
 
     #extra dict-instances info acamulator   
     instances_info={}
@@ -53,7 +58,7 @@ while True:
             instances_info['instance'+str(i)+'_IP']=ip
             instances_info['instance'+str(i)+'_Name']=name                
 #define formatter for the log messages (base on class CustomJsonFormatter )
-    formatter =CustomJsonFormatter('%(region)s  - %(timestamp)s  -  %(message)s - %(levelname)s -%(Running instances)s')
+    formatter =CustomJsonFormatter('%(region)s  - %(timestamp)s  -  %(line)s - %(loglevel)s -%(Running instances)s')
 #formatter=pythonjsonlogger.jsonlogger.JsonFormatter(format_str)
 
 #define jsonlogger
@@ -66,16 +71,15 @@ while True:
         running_instances_mockup()
     else:
         running_instances_info() 
-    logger.info('Running instances for region:'+region+'',extra=instances_info)
+    logger.info('Running instances for region:'+region+'')
 # define time to run
     time.sleep(int(runtime))
+    #
      
 
     
      
-    # {"region": “eu-west-1”, "Running Instances": 5, "timestamp": "2016-08-08T16:21:43.177811", "loglevel": "info", "line": "Running instances for region: $REGION"}
-
-
+    
 
 
 

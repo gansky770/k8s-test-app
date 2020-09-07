@@ -39,20 +39,20 @@ spec:
           volumeMounts:
           - name: varlogcontainers
             mountPath: /var/log/containers
-          - name: varlogpods
-            mountPath: /var/log/pods
-          - name: varlibdockercontainers
-            mountPath: /var/lib/docker/containers
+          # - name: varlogpods
+          #   mountPath: /var/log/pods
+          # - name: varlibdockercontainers
+          #   mountPath: /var/lib/docker/containers
         volumes:
         - name: varlogcontainers
           hostPath:
             path: /var/log/containers
-        - name: varlogpods
-          hostPath:
-            path: /var/log/pods
-        - name: varlibdockercontainers
-          hostPath:
-            path: /var/lib/docker/containers
+        # - name: varlogpods
+        #   hostPath:
+        #     path: /var/log/pods
+        # - name: varlibdockercontainers
+        #   hostPath:
+        #     path: /var/lib/docker/containers
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
