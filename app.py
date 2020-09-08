@@ -21,9 +21,9 @@ while True:
                 now = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 log_record['timestamp'] = now
             if  not log_record.get('Running instances'):
-                if mockup=='TRUE': #if mockup ,random number of instances
-                    log_record['Running instances'] = int(len(instances_info)/2)*int(random.randrange(0,7,1))
-                else:
+                if mockup=='TRUE': #if mockup ,random number of instances 0-50
+                    log_record['Running instances'] = int(random.randrange(0,50,1))
+                else: #real aws instances
                     log_record['Running instances'] = int(len(instances_info)/2)   
             if  not log_record.get('region'):
                 log_record['region'] = region
