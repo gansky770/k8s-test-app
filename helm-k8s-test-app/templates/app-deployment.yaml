@@ -23,6 +23,15 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: secretvolume
+          mountPath: root/.aws 
+          readOnly: false
+      volumes:
+      - name: secretvolume
+        secret:
+          secretName: aws-secret
+       
       #restartPolicy: Always
 
 

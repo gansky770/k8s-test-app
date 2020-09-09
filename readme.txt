@@ -1,6 +1,7 @@
 #python
 1. put the config &cred files in .~/.aws/ folder  (run aws configure >>>its creat  the folder automaticly) ## dir : linux >> ls  ~/.aws  windows: C:\> dir "%UserProfile%\.aws"
-2. insert accesskey to credentials file
+2. insert accesskey to credentials file 
+!!!! IMPORTANT encode your credentials file in secret.yaml (use https://www.base64encode.org/)
 3. configure .env file for runtime ,credentials,config.
 # jenkins
 1.must instal plugins (github,docker,shagent,jobdsl,xmljobtodsl>>for converting piplines)
