@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import sys
 import boto3
 import random
 from pythonjsonlogger import jsonlogger 
@@ -11,7 +12,7 @@ runtime = config('RUNTIME')
 mockup = config('MOCKUP')
 region = boto3.session.Session().region_name
 while True:
-    #formatter constructor
+    #formatter construct
     class CustomJsonFormatter(jsonlogger.JsonFormatter):
         def add_fields(self, log_record, record, message_dict):
             #super(CustomJsonFormatter, self).add_fields(log_record,record, message_dict )
@@ -22,7 +23,7 @@ while True:
                 log_record['timestamp'] = now
             if  not log_record.get('Running instances'):
                 if mockup=='TRUE': #if mockup ,random number of instances 0-50
-                    log_record['Running instances'] = int(random.randrange(0,50,1))
+                    log_record['Running instances'] = int(random.randrange(0,65,1))
                 else: #real aws instances
                     log_record['Running instances'] = int(len(instances_info)/2)   
             if  not log_record.get('region'):
@@ -62,16 +63,20 @@ while True:
 #formatter=pythonjsonlogger.jsonlogger.JsonFormatter(format_str)
 
 #define jsonlogger
+    
     logHandler = logging.StreamHandler()
     logHandler.setFormatter(formatter)
     logger = logging.getLogger()
+    logger.handlers.clear()
     logger.addHandler(logHandler)
     logger.setLevel(logging.INFO)
     if mockup=='TRUE':
         running_instances_mockup()
     else:
-        running_instances_info() 
+        running_instances_info()     
     logger.info('Running instances for region:'+region+'')
+    
+    
 # define time to run
     time.sleep(int(runtime))
     #
