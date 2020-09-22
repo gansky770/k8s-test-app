@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sys
 import boto3
 import random
 from pythonjsonlogger import jsonlogger 
