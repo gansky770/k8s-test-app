@@ -73,7 +73,7 @@ while True:
         running_instances_mockup()
     else:
         running_instances_info()     
-    logger.info('Running instances for region:'+region+'')
+    logger.info('Running instances for region:'+str(region)+'')
     
     
 # define time to run
