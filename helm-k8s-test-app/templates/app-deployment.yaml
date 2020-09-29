@@ -25,12 +25,39 @@ spec:
         - containerPort: 8080
         volumeMounts:
         - name: secretvolume
-          mountPath: root/.aws 
-          readOnly: false
+          mountPath: /root/.aws/credentials
+          subPath: credentials
+          readOnly: true
+        - name: config 
+          mountPath: /root/.aws/config
+          subPath: config
+          readOnly: true
+        - name: env  
+          mountPath: /usr/src/app/.env
+          subPath: .env
+          readOnly: true 
       volumes:
       - name: secretvolume
         secret:
           secretName: aws-secret
+      - name: config
+        configMap:
+          name: env-config
+          items:
+          - key: config
+            path: config  
+      - name: env
+        configMap:
+          name: env-config
+          items:
+          - key: .env
+            path: .env
+
+      #     name: env-config
+      #     items:
+      #     - key: .env
+      #       path: .env
+
        
       #restartPolicy: Always
 

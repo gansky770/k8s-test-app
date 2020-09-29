@@ -1,6 +1,7 @@
 #python
-1.The application run in real nas mockup modes(configure via .env file)
+1.The application run in real and mockup modes(configure via .env file)
 2. insert accesskey to credentials file 
+2.2 there is configmap.yaml and secret.yaml for injection of (credentials.config..env files)
 !!!! IMPORTANT encode your credentials file in secret.yaml (use https://www.base64encode.org/)
 3. configure .env file for runtime ,mockup(true,false).
 # jenkins
