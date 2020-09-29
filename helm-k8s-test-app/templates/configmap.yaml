@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env
+data:
+  # file-like keys
+  .env: |
+    RUNTIME=10
+    MOCKUP=TRUE
+ 
