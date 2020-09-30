@@ -34,4 +34,4 @@ Created a helm package to package the application
  -  Updated  HELM chart to the latest IMAGE build NUMBER
 
 ## ARGO:
- - runs on every change that happens on your MASTER BRANCH.
+ - runs on every change that happens on  MASTER BRANCH.(WEBHOOK CONFIGURED)
