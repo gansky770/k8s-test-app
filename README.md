@@ -4,7 +4,9 @@
  The stack we are are going to use are:
 - [ECK] https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html
 - Kibana 
+- -  CANVAS will show ec2 image  full when the number of running instances reach 50 (ec2-canvas.json in the repo)
 - Filebeat 
+- - collecting logs from only specific pods based on metadata (LOGENABLED=T) that configured on pods .
 ## PYTHON APPLICATION
 -  [BOTO]  collecting a number of EC2 instances running on  AWS Account (mockup Create random value from 1 to 50)
 - The application run in real and mockup modes configure via: 
