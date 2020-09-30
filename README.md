@@ -14,6 +14,7 @@
 - Python application  will produce a log every 10 seconds(can be configure from .env) in infinity loop.
 
 
+### Created a container pipeline  along with pip install and lint.(dockerfile)
  
  ## K8S:
 Created a helm package to package the application 
