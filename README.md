@@ -2,20 +2,18 @@
  # Building a unifi Cloud Native logging facility FULL CYCLE - Python/CI/CD/HELM
  
  The stack we are are going to use are:
-- ECK https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html
+- [ECK] https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html
 - Kibana 
 - Filebeat 
 ## PYTHON APPLICATION
--  BOTO  collecting a number of EC2 instances running on  AWS Account (mockup Create random value from 1 to 50)
+-  [BOTO]  collecting a number of EC2 instances running on  AWS Account (mockup Create random value from 1 to 50)
 - The application run in real and mockup modes configure via: 
 - - .env file
 - - secret.yaml    
 - - configmap.yaml
 - Python application  will produce a log every 10 seconds(can be configure from .env) in infinity loop.
 
-#
 
-## Created a container pipeline  along with pip install and lint.(dockerfile)
  
  ## K8S:
 Created a helm package to package the application 
@@ -23,7 +21,7 @@ Created a helm package to package the application
 - curl -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash) 
 
  ## JENKINS:
- ##### preset:
+ #### preset:
 
 - 1. must install plugins (github,docker,shagent,jobdsl,xmljobtodsl>>for converting piplines)
 - 2. create credentials (dockerhub ,git >> must bu ssh >>create keypair with jenkins username )
