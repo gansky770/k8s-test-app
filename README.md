@@ -1,5 +1,5 @@
 ###
- # Building a unifi Cloud Native logging facility FULL CYCLE - Python/CI/CD/HELM
+ # Building a unify Cloud Native logging facility FULL CYCLE - Python/CI/CD/HELM
  
  The stack we are are going to use are:
 - [ECK] https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html
