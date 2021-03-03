@@ -26,7 +26,7 @@ Created a helm package to package the application
  ## JENKINS:
  #### preset:
 
-- 1. must install plugins (github,docker,shagent,jobdsl,xmljobtodsl>>for converting piplines)
+- 1. must install plugins (github,docker,docker-pipeline,shagent,jobdsl,xmljobtodsl>>for converting piplines)
 - 2. create credentials (dockerhub ,git >> must bu ssh >>create keypair with jenkins username )
 #
  - Jenkins used to build on every push under branch development.
